@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course TA"
 permalink: /teaching/2011-fall-teaching-1
 venue: "Princeton University, Political Science"
-date: 2011-09
+date: 2011-09-01
 location: "Princeton, NJ"
 ---
 

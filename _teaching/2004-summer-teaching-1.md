@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course TA"
 permalink: /teaching/2004-summer-teaching-1
 venue: "Cornell University"
-date: 2004-2005
+date: 2004-06-01
 location: "Ithaca, NY"
 ---
 
