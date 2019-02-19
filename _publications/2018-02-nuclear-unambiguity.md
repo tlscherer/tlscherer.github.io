@@ -1,7 +1,7 @@
 ---
-title: "Nuclear unambiguity, no-first-use, and crisis s­tability in asymmetric crises"
+title: "Why the Afghan election still isn’t over"
 collection: publications
-permalink: /publication/2018-02-nuclear-unambiguity
+permalink: /publication/2014-08-afghanistan-election
 excerpt: 'The alleged benefits of NFU may not be overstated, at least for crisis stability in asymmetric crises.'
 date: 2018-02-07
 venue: 'The Nonproliferation Review'
