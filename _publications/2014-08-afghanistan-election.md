@@ -6,7 +6,7 @@ excerpt: 'Nearly two months after Afghans cast their presidential ballots, the e
 date: 2014-08-12
 venue: 'The Washington Post'
 paperurl: 'https://www.washingtonpost.com/news/monkey-cage/wp/2014/08/12/why-the-afghan-election-still-isnt-over/'
-citation: 'Scherer, Thomas Leo (2014, August 12). "Why the Afghanistan Election Still Isn’t Over", The Washington Post.
+citation: 'Scherer, Thomas Leo (2014, August 12). "Why the Afghanistan Election Still Isn’t Over", The Washington Post.'
 
 ---
 
