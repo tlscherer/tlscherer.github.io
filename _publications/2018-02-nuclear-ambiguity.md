@@ -5,7 +5,7 @@ permalink: /publication/2018-02-nuclear-ambiguity
 excerpt: 'The alleged benefits of NFU may be overstated, at least for crisis stability in asymmetric crises.'
 date: 2018-02-06
 venue: 'The Nonproliferation Review'
-paperurl: 'http://tlscherer.github.io/files/2018-02-nuclear-ambiguity.pdf'
+paperurl: 'https://www.tandfonline.com/doi/abs/10.1080/10736700.2018.1430552?journalCode=rnpr20'
 citation: 'Alexander Lanoszka & Thomas Leo Scherer (2017) Nuclear ambiguity, no-first-use, and crisis s­tability in asymmetric crises, The Nonproliferation Review, 24:3-4, 343-355'
 
 ---
