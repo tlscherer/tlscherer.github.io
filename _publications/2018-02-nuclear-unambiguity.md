@@ -2,9 +2,9 @@
 title: "Why the Afghan election still isn’t over"
 collection: publications
 permalink: /publication/2014-08-afghanistan-election
-excerpt: 'The alleged benefits of NFU may not be overstated, at least for crisis stability in asymmetric crises.'
-date: 2018-02-07
-venue: 'The Nonproliferation Review'
+excerpt: 'Nearly two months after Afghans cast their presidential ballots, the electoral battle continues with the possibility of spiraling into violence. Why have the candidates continued to fight?'
+date: 2014-08-12
+venue: 'The Washington Post'
 paperurl: 'https://www.tandfonline.com/doi/abs/10.1080/10736700.2018.1430552?journalCode=rnpr20'
 citation: 'Alexander Lanoszka & Thomas Leo Scherer (2017) Nuclear unambiguity, no-first-use, and crisis s­tability in asymmetric crises, The Nonproliferation Review, 24:3-4, 343-355'
 

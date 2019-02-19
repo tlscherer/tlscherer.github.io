@@ -2,8 +2,7 @@
 title: "Why the Afghan election still isn’t over"
 collection: publications
 permalink: /publication/2014-08-afghanistan-election
-excerpt: 'Nearly two months after Afghans cast their presidential ballots, the electoral battle continues with the
-possibility of spiraling into violence. Why have the candidates continued to fight?'
+excerpt: 'Nearly two months after Afghans cast their presidential ballots, the electoral battle continues with the possibility of spiraling into violence. Why have the candidates continued to fight?'
 date: 2014-08-12
 venue: 'The Washington Post'
 paperurl: 'https://www.washingtonpost.com/news/monkey-cage/wp/2014/08/12/why-the-afghan-election-still-isnt-over/'
