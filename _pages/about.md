@@ -13,5 +13,4 @@ I strive to be an academic-practitioner in peace and conflict. I am currently th
 Much of my work centers around questions of peacekeeping and foreign intervention. I am also interested in global emergency response, gender and conflict, and the micro-dynamics of war.
 
 
-#### Template Information
-This template was forked from [academicpages](https://github.com/academicpages/academicpages.github.io), which was forked (then detached) by Stuart Geiger from the Minimal Mistakes Jekyll Theme, which is © 2016 Michael Rose and released under the MIT License. 
+ <font size="1"> This template was forked from [academicpages](https://github.com/academicpages/academicpages.github.io), which was forked (then detached) by Stuart Geiger from the Minimal Mistakes Jekyll Theme, which is © 2016 Michael Rose and released under the MIT License. </font>
