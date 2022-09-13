@@ -10,9 +10,10 @@ redirect_from:
 
 I strive to be an academic-practitioner in peace and conflict. I am currently the Deputy Director of the [Center for Peace and Security Studies (cPASS)](http://cpass.ucsd.edu/) at University of California, San Diego. 
 
-Much of my work centers around questions of peacekeeping and foreign intervention. I am also interested in global emergency response, gender and conflict, and the micro-dynamics of war.
+My research focuses on measurement and data quality in violence and conflict. I am currently working on extracting event data from international crises narratives (see the [ArXiv pre-print](https://arxiv.org/abs/2202.07081)). 
 
-<br>
+I currently have contract projects on research quality with the US Institute of Peace and the National Institute of Justice. I am an Academic Fellow at [fp21](https://www.fp21.org/).
+
 <br>
 <br>
 <br>
