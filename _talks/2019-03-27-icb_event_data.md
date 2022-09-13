@@ -4,7 +4,7 @@ collection: talks
 type: "Talk"
 permalink: /talks/2019_03_27_icb_event_data
 
-venue: "International Studies Association annual conferencce"
+venue: "International Studies Association annual conference"
 date: 2019-03-27
 location: "Toronto, Ontario, Canada"
 ---
