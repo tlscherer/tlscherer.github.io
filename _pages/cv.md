@@ -6,9 +6,9 @@ author_profile: true
 redirect_from:
   - /resume
 ---
-[Link to CV with correct formatting](https://docs.google.com/document/d/e/2PACX-1vQH4kefVMNtkcVGo1qtpOR5p9djVYpdicN2QiP71dcz-Cg-xxenOYZsl70ttIUErXIBIs199wbT9n9q/pub)
+[Link to CV with correct formatting](https://docs.google.com/document/d/1MlTXXH8CW8lGLMsU-XNKCF6hQ1lDffgDwOmdpUMatu)
 
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vQH4kefVMNtkcVGo1qtpOR5p9djVYpdicN2QiP71dcz-Cg-xxenOYZsl70ttIUErXIBIs199wbT9n9q/pub?embedded=true" width="100%" height="100%"></iframe>
+<iframe src="https://docs.google.com/document/d/1MlTXXH8CW8lGLMsU-XNKCF6hQ1lDffgDwOmdpUMatu" width="100%" height="100%"></iframe>
 
 
 
