@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tlscherer.github.io</title>
+<title>tlscherer.github.io – Thomas Leo Scherer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-400f2623a43293afaef32bc54a8ee710.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3accfb8913872275534684de8611f1a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">tlscherer.github.io</span>
+    <span class="navbar-title">Thomas Leo Scherer</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -99,6 +101,46 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-research">    
+        <li>
+    <a class="dropdown-item" href="./living_lit_review.qmd">
+ <span class="dropdown-text">Living Lit Review</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./publications.qmd">
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gaming" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gaming</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-gaming">    
+        <li>
+    <a class="dropdown-item" href="./posts.qmd#category=board_games">
+ <span class="dropdown-text">Board Games</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./posts.qmd#category=TTRPGs">
+ <span class="dropdown-text">TTRPGs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./posts.qmd#category=computer_games">
+ <span class="dropdown-text">Computer Games</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/tlscherer.bsky.social" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -229,6 +271,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -543,6 +590,20 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+Thomas Leo Scherer ©
+<script>document.write(new Date().getFullYear())</script>
+</div>   
+    <div class="nav-footer-center">
+<p>Built on <a href="https://github.com/drganghe/quarto-academic-website-template">Quarto Academic Website Template</a> adapted by <a href="http://drganghe.github.io">Dr.&nbsp;Gang He</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
