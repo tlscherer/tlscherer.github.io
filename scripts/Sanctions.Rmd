@@ -1,0 +1,17 @@
+---
+title: "Sanctions"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(readxl)
+```
+
+
+```{r warning=FALSE}
+#install.packages("tidyverse")
+gsdb = readr::read_csv(here::here("data", "raw", "GSDB_V4.csv"))
+ties = readxl::read_excel(here::here("data", "raw", "TIESv4-1.xls"))
+
+```

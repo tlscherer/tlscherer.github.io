@@ -1,0 +1,476 @@
+---
+title: "HowWarsEnd"
+output: html_document
+---
+
+
+```{r}
+library(dplyr)
+```
+
+
+```{r warning=FALSE}
+#install.packages("tidyverse")
+termination_data = readr::read_csv(here::here("data", "raw", "UCDPConflictTerminationDataset_v4_2024_Conflict.csv"))
+
+conflict_data = readr::read_csv(here::here("data", "raw", "UcdpPrioConflict_v25_1.csv"))
+```
+
+##### Variables of interest: 
+
+**type of conflict2**
+The same conflict episode, or dyadic conflict episode, may include both years
+where neither side receive secondary support and years when they do. Type
+2 thus combine the categories of internal armed conflict and internationalized
+armed conflict into the categories described below
+1. Extrasystemic armed conflict.
+2. Interstate armed conflict.
+3. Intrastate armed conflict.
+
+
+**c outcome**
+The coding of outcomes are based on the final year of activity and first year of
+non-activity.
+1= Peace agreement
+2= Ceasefire
+3= Victory for Side A /Government Side
+4= Victory for Side B /Non-State Side
+5= Low activity (some, but less than 25 battle-deaths in subsequent year(s))
+6= Actor ceases to exist
+
+
+
+```{r}
+termination_data <- termination_data %>%
+  mutate(c_outcome_simple = case_when(
+    is.na(c_outcome)           ~ "ongoing",
+    c_outcome %in% c(1, 2)     ~ "diplomatic",
+    c_outcome %in% 3:6         ~ "military",
+    TRUE                       ~ "other"  # Catch-all for unexpected values
+  ))
+```
+
+```{r}
+# create decade variable and termination variable
+termination_data <- termination_data %>%
+  mutate(decade = (year %/% 10) * 10) 
+
+
+termination_data <- termination_data %>%
+  # Sort by ID and Year to ensure 'lead' picks the correct next row
+  arrange(conflict_id, year) %>%
+  
+  # Group by ID so we only compare years within the same conflict
+  group_by(conflict_id) %>%
+  
+  # Create the duration (gap) variable
+  mutate(duration = ifelse(
+    c_epterm == 1, 
+    lead(year) - year, 
+    NA
+  )) %>%
+  ungroup()
+```
+
+
+```{r}
+termination_data <- termination_data %>%
+  # Ensure data is ordered correctly by conflict and time
+  arrange(conflict_id, year) %>%
+  group_by(conflict_id) %>%
+  mutate(
+    # 1. Create conflict_resumes
+    # Check if any subsequent year exists for this conflict_id
+    conflict_resumes = ifelse(
+      c_epterm == 1, 
+      as.integer(year < max(year)), 
+      NA
+    ),
+    # 2. Create peace_duration
+    # Calculate years until the next recorded observation for this conflict
+    peace_duration = ifelse(
+      c_epterm == 1 & conflict_resumes == 1,
+      lead(year) - year,
+      NA
+    )
+  ) %>%
+  ungroup()
+
+termination_data <- termination_data %>%   
+  mutate(
+    # 1. Create conflict_resumes
+    # Check if any subsequent year exists for this conflict_id
+    peace_never_fails = ifelse(
+      c_epterm == 1 & is.na(peace_duration), 
+      as.integer(max(year)-year), 
+      NA
+    )
+  )
+
+termination_data <- termination_data %>%   
+  mutate(
+    # 1. Create conflict_resumes
+    # Check if any subsequent year exists for this conflict_id
+    peace_fails_in_10 = ifelse(
+      c_epterm == 1 & (peace_duration>10 | is.na(peace_duration)), 
+      0, 
+      1
+    )
+  )
+
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(termination_data %>% filter(type_of_conflict %in% c(2, 4)), 
+       aes(x = year, fill = c_outcome_simple)) +
+  geom_bar(position = "stack") +
+  scale_x_continuous(
+    breaks = seq(from = 1900, to = 2020, by = 10) # Adjust start/end to your data
+  ) +
+  labs(
+    title = "War Terminations Each Year by Outcome",
+    x = "Year",
+    y = "Wars Terminated",
+    fill = "Outcome Type"
+  ) +
+  theme_minimal()
+
+
+```
+
+
+
+```{r}
+# Pre-calculate the counts per year and outcome
+
+decade_data <- termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2 | type_of_conflict == 4) %>%
+  mutate(decade = (year %/% 10) * 10) 
+
+# Create the line chart
+ggplot(decade_data, aes(x = decade, fill = c_outcome_simple)) +
+  geom_bar(position = "stack") +
+  scale_x_continuous(breaks = seq(from = 1900, to = 2020, by = 10)) +
+  labs(
+    title = "War Terminations Over Time by Outcome",
+    x = "Year",
+    y = "Number of Wars Terminated",
+    color = "Outcome Type"
+  ) +
+  theme_minimal()
+```
+# Outcomes of Interstate Wars
+
+```{r}
+# Pre-calculate the counts per year and outcome
+decade_data <- termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2 ) %>%
+  mutate(decade = (year %/% 10) * 10)
+```
+
+
+```{r}
+# Get counts
+decade_data
+```
+
+
+```{r}
+# Create the line chart
+ggplot(decade_data, aes(x = decade, fill = c_outcome_simple)) +
+  geom_bar(position = "stack") +
+  scale_x_continuous(breaks = seq(from = 1900, to = 2020, by = 10)) +
+  labs(
+    # title = "War Terminations Over Time by Outcome",
+    x = "Decade",
+    y = "Number of Wars Terminated",
+    color = "Outcome Type",
+    fill = "Means of War End"
+  ) +
+  theme_minimal() +
+  theme(
+    # Move legend inside the plot area (top right)
+    legend.position = c(0.98, 0.98),
+    # Anchor the legend by its top-right corner so it doesn't bleed off the edge
+    legend.justification = c("right", "top"),
+    # Optional: Add a background/border to ensure readability against the bars
+    legend.background = element_rect(fill = "white", color = "black", linewidth = 0.2),
+    axis.title = element_text(size = 11, color = "black"),
+    axis.text = element_text(size = 11, color = "black")
+  )
+```
+```{r}
+# total number of conflicts
+termination_data %>% filter(type_of_conflict == 2) %>% select(conflict_id) %>% unique() %>% nrow()
+
+```
+
+```{r}
+decade_count <- termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  count(decade, c_outcome_simple)
+```
+
+```{r}
+# count of interstate conflict endins for whole dataset
+
+decade_count %>%
+  group_by(c_outcome_simple) %>%         
+  summarize(total_n = sum(n))
+```
+
+
+```{r}
+
+termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  group_by(c_outcome_simple, conflict_resumes) %>%
+  summarize(total_n = n(), .groups = 'drop')
+
+```
+
+
+```{r}
+termination_data %>% 
+  filter(c_epterm == 1) %>%
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  filter(conflict_resumes == 1) %>%
+  group_by(c_outcome_simple) %>%         
+  summarize(
+    count = n(),
+    avg_peace = mean(peace_duration, na.rm = TRUE),
+    .groups = "drop" # Keeps the output as a clean, ungrouped tibble
+  )
+```
+```{r}
+termination_data %>% 
+  filter(c_epterm == 1) %>%
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  filter(conflict_resumes == 1) %>% 
+  select(c_outcome_simple, peace_duration) %>% 
+  arrange(peace_duration)
+  )
+```
+```{r}
+termination_data %>% 
+  filter(c_epterm == 1) %>%
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  filter(conflict_resumes == 1) %>%
+  group_by(c_outcome_simple, peace_fails_in_10) %>%         
+  summarize(
+    count = n(),
+    avg_peace = mean(peace_duration, na.rm = TRUE),
+    .groups = "drop" # Keeps the output as a clean, ungrouped tibble
+  )
+```
+```{r}
+termination_data %>% 
+  filter(c_epterm == 1) %>%
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  group_by(c_outcome_simple, peace_fails_in_10) %>%         
+  summarize(
+    count = n(),
+    avg_peace = mean(peace_duration, na.rm = TRUE),
+    .groups = "drop" # Keeps the output as a clean, ungrouped tibble
+  )
+```
+
+```{r}
+termination_data %>% 
+  filter(c_epterm == 1) %>%
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  group_by(c_outcome_simple) %>%         
+  summarize(
+    count = n(),
+    percent_fail = mean(peace_fails_in_10),
+    .groups = "drop" # Keeps the output as a clean, ungrouped tibble
+  )
+```
+
+
+
+
+
+# Outcomes of Interstate and Internationalized Wars
+
+```{r}
+# Create the line chart
+ggplot(termination_data %>%
+    filter(c_outcome_simple != 'ongoing') %>%
+    filter(type_of_conflict %in% c(2,4)), 
+  aes(x = decade, fill = c_outcome_simple)) +
+  geom_bar(position = "stack") +
+  scale_x_continuous(breaks = seq(from = 1900, to = 2020, by = 10)) +
+  labs(
+    title = "War Terminations Over Time by Outcome",
+    x = "Year",
+    y = "Number of Wars Terminated",
+    color = "Outcome Type"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+decade_plus_count <- termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict %in% c(2,4)) %>%
+  count(decade, c_outcome_simple)
+
+decade_plus_count %>%
+  filter(decade > 1999) %>%     
+  group_by(c_outcome_simple) %>%         
+  summarize(total_n = sum(n))
+```
+
+```{r}
+decade_plus_count %>%
+  group_by(c_outcome_simple) %>%         
+  summarize(total_n = sum(n))
+```
+
+# Duration of peace
+
+
+```{r}
+restart_analysis <- termination_data %>%
+  filter(type_of_conflict %in% c(2,4)) %>%
+  filter(c_outcome_simple %in% c("diplomatic", "military")) %>%
+  filter(c_epterm == 1) %>%
+  
+  # Group by the type of termination
+  group_by(c_outcome_simple) %>%
+  
+  # Calculate the metrics
+  summarize(
+    total_terminations = n(),
+    num_restarts = sum(!is.na(duration)),
+    avg_peace_duration = mean(duration, na.rm = TRUE)
+  )
+
+print(restart_analysis)
+```
+
+```{r}
+restart_analysis <- termination_data %>%
+  filter(type_of_conflict %in% c(2,4)) %>%
+  filter(decade > 1999) %>%     
+  filter(c_outcome_simple %in% c("diplomatic", "military")) %>%
+  filter(c_epterm == 1) %>%
+  
+  # Group by the type of termination
+  group_by(c_outcome_simple) %>%
+  
+  # Calculate the metrics
+  summarize(
+    total_terminations = n(),
+    num_restarts = sum(!is.na(duration)),
+    avg_peace_duration = mean(duration, na.rm = TRUE)
+  )
+
+print(restart_analysis)
+```
+
+
+
+
+# Scrap 
+
+```{r}
+ggplot(termination_data %>% 
+         filter(c_outcome_simple != 'ongoing') %>% 
+           filter(type_of_conflict == 4), 
+       aes(x = year, fill = c_outcome_simple)) +
+  geom_bar(position = "stack") +
+  scale_x_continuous(
+    breaks = seq(from = 1900, to = 2020, by = 10) # Adjust start/end to your data
+  ) +
+  labs(
+    title = "War Terminations Each Year by Outcome",
+    x = "Year",
+    y = "Wars Terminated",
+    fill = "Outcome Type"
+  ) +
+  theme_minimal()
+
+```
+
+
+```{r}
+ggplot(termination_data %>% 
+         filter(c_outcome_simple != 'ongoing') %>% 
+           filter(type_of_conflict == 2), 
+       aes(x = year, fill = c_outcome_simple)) +
+  geom_bar(position = "stack") +
+  scale_x_continuous(
+    breaks = seq(from = 1900, to = 2020, by = 10) # Adjust start/end to your data
+  ) +
+  labs(
+    title = "War Terminations Each Year by Outcome",
+    x = "Year",
+    y = "Wars Terminated",
+    fill = "Outcome Type"
+  ) +
+  theme_minimal()
+```
+
+
+
+```{r}
+# Pre-calculate the counts per year and outcome
+
+plot_data <- termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  count(year, c_outcome_simple)
+
+# Create the line chart 
+ggplot(plot_data, aes(x = year, y = n, color = c_outcome_simple)) +
+  geom_line(linewidth = 1) +
+  scale_x_continuous(
+    breaks = seq(from = 1900, to = 2020, by = 10)
+  ) +
+  labs(
+    title = "War Terminations Over Time by Outcome",
+    x = "Year",
+    y = "Number of Wars Terminated",
+    color = "Outcome Type"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+# Pre-calculate the counts per year and outcome
+plot_data <- termination_data %>% 
+  filter(c_outcome_simple != 'ongoing') %>%
+  filter(type_of_conflict == 2) %>%
+  count(year, c_outcome_simple)
+
+# Create the line chart
+
+ggplot(plot_data, aes(x = year, y = n, color = c_outcome_simple)) +
+  geom_line(linewidth = 1) +
+  scale_x_continuous(
+    breaks = seq(from = 1900, to = 2020, by = 10)
+  ) +
+  labs(
+    title = "War Terminations Over Time by Outcome",
+    x = "Year",
+    y = "Number of Wars Terminated",
+    color = "Outcome Type"
+  ) +
+  theme_minimal()
+  
+```
+
+
