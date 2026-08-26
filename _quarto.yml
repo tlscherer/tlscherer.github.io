@@ -12,25 +12,28 @@ website:
         href: index.qmd
       - text: About
         href: about.qmd
-      - text: Research
-        menu:
-        - text: Living Lit Review
-          href: living_lit_review.qmd
-        - text: Publications
-          href: publications.qmd
-      - text: Gaming
-        menu:
-        - text: Board Games
-          href: posts.qmd#category=board_games
-        - text: TTRPGs
-          href: posts.qmd#category=TTRPGs
-        - text: Computer Games
-          href: posts.qmd#category=computer_games
+      - text: AbroadReview
+        href: www.AbroadReview.com
+      - text: Publications
+        href: publications.qmd
+      # - text: Gaming
+      #   menu:
+      #   - text: Board Games
+      #     href: posts.qmd#category=board_games
+      #   - text: TTRPGs
+      #     href: posts.qmd#category=TTRPGs
+      #   - text: Computer Games
+      #     href: posts.qmd#category=computer_games
     right:
-      - text: "{{< fa brands bluesky >}}"
+      # - text: "{{< fa brands bluesky >}}"
+      #   href: https://bsky.app/profile/tlscherer.bsky.social
+      #   target: _blank
+      - text: bluesky
         href: https://bsky.app/profile/tlscherer.bsky.social
         target: _blank
-
+      - icon: linkedin
+        href: https://www.linkedin.com/in/thomas-scherer-b468847/
+        target: _blank
 
 
   # google-analytics:
