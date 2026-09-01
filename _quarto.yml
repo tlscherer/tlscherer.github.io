@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Thomas Leo Scherer"
+  site-url: "https://www.tlscherer.com"  
   navbar:
     background: '#B31B1B'  # You can change the background color here
     left:
