@@ -12,7 +12,7 @@ title-block-banner: false
 ---
 
 ::: {.column-body style="margin-bottom: 2rem;"}
-Welcome to my personal site, title TBD.
+Welcome to my personal site, working title World Games.
 
-I run [AbroadReview](www.abroadreview.com), living summaries of the best academic research on international relations. On this site, I explore two other passions: improving U.S. foreign policy and gaming with friends.
+I run [AbroadReview](www.abroadreview.com) where I write living summaries of the best academic research on international relations. Here I explore two other passions: improving U.S. foreign policy and making the most of game times.
 :::
