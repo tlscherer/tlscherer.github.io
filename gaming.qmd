@@ -1,0 +1,15 @@
+---
+title: "Gaming with Friends"
+subtitle: "Posts focused on playing games with your friends"
+listing:
+  contents: posts
+  include:
+    categories: "gaming"
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: false
+---

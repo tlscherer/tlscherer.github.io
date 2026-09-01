@@ -1,7 +1,18 @@
 ---
-title: "tlscherer.github.io"
+title: ""
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: false
 ---
 
-This is a Quarto website.
+::: {.column-body style="margin-bottom: 2rem;"}
+Welcome to my personal site, title TBD.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I run [AbroadReview](www.abroadreview.com), living summaries of the best academic research on international relations. On this site, I explore two other passions: improving U.S. foreign policy and gaming with friends.
+:::

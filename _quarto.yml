@@ -6,16 +6,19 @@ website:
   title: "Thomas Leo Scherer"
   navbar:
     background: '#B31B1B'  # You can change the background color here
-
     left:
-      - text: Home
-        href: index.qmd
-      - text: About
-        href: about.qmd
       - text: AbroadReview
-        href: www.AbroadReview.com
-      - text: Publications
-        href: publications.qmd
+        href: https://www.AbroadReview.com
+      - text: Foreign Policy
+        href: foreignpolicy.qmd
+      - text: Gaming
+        href: gaming.qmd
+      - text: More
+        menu:
+        - text: About
+          href: about.qmd
+        - text: Publications
+          href: publications.qmd
       # - text: Gaming
       #   menu:
       #   - text: Board Games
@@ -25,9 +28,8 @@ website:
       #   - text: Computer Games
       #     href: posts.qmd#category=computer_games
     right:
-      # - text: "{{< fa brands bluesky >}}"
-      #   href: https://bsky.app/profile/tlscherer.bsky.social
-      #   target: _blank
+      - text: "<span class='open-subscribe-modal' style='background-color: #0d6efd; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: pointer;'>Subscribe</span>"
+        href: "javascript:void(0);"
       - text: bluesky
         href: https://bsky.app/profile/tlscherer.bsky.social
         target: _blank
@@ -42,23 +44,13 @@ website:
 
   page-footer: 
     left: "Thomas Leo Scherer &copy; <script>document.write(new Date().getFullYear())</script>" 
-    center: "Built on [Quarto Academic Website Template](https://github.com/drganghe/quarto-academic-website-template) adapted by [Dr. Gang He](http://drganghe.github.io)"
-    # right:  
-      # - icon: github
-      #   href: https://github.com/drganghe/quarto-academic-website-template
-      #   target: _blank
-      # - text: "{{< fa brands bluesky >}}" 
-      #   href: https://bsky.app
-      #   target: _blank
-      # - icon: rss
-      #   href: posts.xml
-      #   target: _blank  
 
 format:
   html:
     theme:
       - cosmo
       - brand
+    include-after-body: subscribe.html
     css: styles.css
     toc: true
     footnotes-hover: true
@@ -71,4 +63,3 @@ format:
     email-obfuscation: javascript
     # link-external-filter: '^(?:http:|https:)\/\/drganghe\.github\.io\/custom'
     # include-in-header: "files/includes/_academic.qmd"
-

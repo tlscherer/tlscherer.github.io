@@ -1,5 +1,27 @@
 ---
 title: "About"
+image: images/Thomas_01.jpg
+about:
+  template: solana      # Places photo top-left with text flowing around it
+  image-width: 12em
+  image-shape: rectangle # Options: rectangle, round, rounded
+  links:
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/tlscherer.bsky.social
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/thomas-scherer-b468847/
 ---
 
-About this site
+My name is [Thomas Scherer](http://localhost:6356/www.tlscherer.com). I have worked in government at the US Institute of Peace, academia at the University of California, San Diego, non-profits at the think tank fp21, and media at Bloomberg Economics. I am a volunteer firefighter, gamer, and husky dad. I earned a PhD in international relations from Princeton University.
+
+I am the author of [AbroadReview](www.abroadreview.com), a living literature review on topics in foreign policy and international relations (also available on [Beehiiv](https://abroadreview.beehiiv.com/) and [Substack](https://abroadreview.substack.com/)). It's goal is to provide a clear perspective on world events based on theories and evidence from international relations academic research.
+
+AI usage: No AI is used in any writing on this website, just Grammarly. I have used Gemini to assist with coding in Quarto and R for creating the website.
+
+#### About the website
+
+This website is built on Quarto and hosted on Github. It was widely adapted from a template by [Dr. Gang He](http://drganghe.github.io/).
+
+

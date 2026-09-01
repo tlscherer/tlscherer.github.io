@@ -1,0 +1,11 @@
+---
+title: "Foreign Policy for the People"
+description: "People keep deluding themselves into believing this can work. But it might work for us."
+date: "2026-08-31"
+#image: ""
+categories:
+  - foreign policy
+---
+This post is a placeholder for a future project. 
+
+You get great sounding efforts like the Carnegie Endowment's [Foreign Policy for the Middle Class](https://carnegieendowment.org/projects/foreign-policy-for-the-middle-class), but nothing seems to come of them. Why not? 

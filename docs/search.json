@@ -1,16 +1,58 @@
 [
   {
+    "objectID": "gaming.html",
+    "href": "gaming.html",
+    "title": "Gaming with Friends",
+    "section": "",
+    "text": "Peer-reviewed Gaming\n\n\n\ngaming\n\n\n\nWhy did a university press have a booth at GenCon?\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nGenCon 2026\n\n\n\ngaming\n\n\n\nGameplays and takeaways from nerd-vana\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/gencon2026.html",
+    "href": "posts/gencon2026.html",
+    "title": "GenCon 2026",
+    "section": "",
+    "text": "This post is a placeholder for a future post.\nYou get great sounding efforts like the Carnegie Endowment’s Foreign Policy for the Middle Class, but nothing seems to come of them. Why not?"
+  },
+  {
+    "objectID": "posts/FPforthePeople.html",
+    "href": "posts/FPforthePeople.html",
+    "title": "Foreign Policy for the People",
+    "section": "",
+    "text": "This post is a placeholder for a future project.\nYou get great sounding efforts like the Carnegie Endowment’s Foreign Policy for the Middle Class, but nothing seems to come of them. Why not?"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "tlscherer.github.io",
+    "title": "Thomas Leo Scherer",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Welcome to my personal site, title TBD.\nI run AbroadReview, living summaries of the best academic research on international relations. On this site, I explore two other passions: improving U.S. foreign policy and gaming with friends.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAccountability in U.S. Foreign Policy\n\n\n\nforeign policy\n\n\n\nAre their any consequences for foreign policy blunders?\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nForeign Policy for the People\n\n\n\nforeign policy\n\n\n\nPeople keep deluding themselves into believing this can work. But it might work for us.\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nPeer-reviewed Gaming\n\n\n\ngaming\n\n\n\nWhy did a university press have a booth at GenCon?\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nGenCon 2026\n\n\n\ngaming\n\n\n\nGameplays and takeaways from nerd-vana\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "My name is Thomas Scherer. I have worked in government at the US Institute of Peace, academia at the University of California, San Diego, non-profits at the think tank fp21, and media at Bloomberg Economics. I am a volunteer firefighter, gamer, and husky dad. I earned a PhD in international relations from Princeton University.\nI am the author of AbroadReview, a living literature review on topics in foreign policy and international relations (also available on Beehiiv and Substack). It’s goal is to provide a clear perspective on world events based on theories and evidence from international relations academic research.\nAI usage: No AI is used in any writing on this website, just Grammarly. I have used Gemini to assist with coding in Quarto and R for creating the website.\n\nAbout the website\nThis website is built on Quarto and hosted on Github. It was widely adapted from a template by Dr. Gang He."
+  },
+  {
+    "objectID": "posts/FPaccountabilility.html",
+    "href": "posts/FPaccountabilility.html",
+    "title": "Accountability in U.S. Foreign Policy",
+    "section": "",
+    "text": "This post is a placeholder for a future project.\nThere seems to be a lack of accountability in U.S. foreign policy. Was anyone held responsible for the 2003 invasion of Iraq?\nProfessions develop accountability mechanisms all the time. Doctors have to maintain their license. Lawyers can be disbarred. Why isn’t there something similar in foreign policy? It may be helpful to distinguish between politicians, foreign service, and ‘thought leaders’.\nIs there anything to be learned from other countries? There are many examples of other democracies holding leaders accountable for their actions, but are any of them due to foreign policy?"
+  },
+  {
+    "objectID": "posts/peerreviewedgaming.html",
+    "href": "posts/peerreviewedgaming.html",
+    "title": "Peer-reviewed Gaming",
+    "section": "",
+    "text": "This post is a placeholder for a future post."
+  },
+  {
+    "objectID": "foreignpolicy.html",
+    "href": "foreignpolicy.html",
+    "title": "Foreign Policy",
+    "section": "",
+    "text": "Accountability in U.S. Foreign Policy\n\n\n\nforeign policy\n\n\n\nAre their any consequences for foreign policy blunders?\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nForeign Policy for the People\n\n\n\nforeign policy\n\n\n\nPeople keep deluding themselves into believing this can work. But it might work for us.\n\n\n\n\n\nAug 31, 2026\n\n\n\n\n\nNo matching items"
   }
 ]

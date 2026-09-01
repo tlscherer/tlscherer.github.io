@@ -1,0 +1,25 @@
+<div style="margin-top: 4em; padding-top: 2em; border-top: 1px solid #e9ecef;">
+  <h3>Comments</h3>
+  
+  <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="2c102d49-2d1b-45c2-8569-a92d5eea4c4d"
+    data-page-id="{{< meta title >}}"
+    data-page-url="{{< meta absolute-url >}}"
+    data-page-title="{{< meta title >}}">
+  </div>
+
+  <script>
+    // Custom label overrides for the Cusdis embed
+    window.CUSDIS_LOCALE = {
+      powered_by: '',
+      post_comment: 'Submit Comment',
+      nickname: 'Name',             <!-- Changes "Nickname" label to "Name" -->
+      email: 'Email (optional)',     <!-- Customizes or renames email field label -->
+      reply: 'Reply',
+      reply_to: 'Reply to',
+      plugin_name: 'Cusdis'
+    };
+  </script>
+  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+</div>

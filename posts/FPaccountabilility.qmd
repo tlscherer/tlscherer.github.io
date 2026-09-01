@@ -1,0 +1,16 @@
+---
+title: "Accountability in U.S. Foreign Policy"
+description: "Are their any consequences for foreign policy blunders?"
+date: "2026-08-31"
+#image: ""
+categories:
+  - foreign policy
+---
+
+This post is a placeholder for a future project. 
+
+There seems to be a lack of accountability in U.S. foreign policy. Was anyone held responsible for the 2003 invasion of Iraq? 
+
+Professions develop accountability mechanisms all the time. Doctors have to maintain their license. Lawyers can be disbarred. Why isn't there something similar in foreign policy? It may be helpful to distinguish between politicians, foreign service, and 'thought leaders'. 
+
+Is there anything to be learned from other countries? There are many examples of other democracies holding leaders accountable for their actions, but are any of them due to foreign policy?

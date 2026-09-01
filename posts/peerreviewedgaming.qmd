@@ -1,0 +1,10 @@
+---
+title: "Peer-reviewed Gaming"
+description: "Why did a university press have a booth at GenCon?"
+date: "2026-08-31"
+#image: ""
+categories:
+  - gaming
+---
+
+This post is a placeholder for a future post.

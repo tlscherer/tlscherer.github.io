@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tlscherer.github.io – Thomas Leo Scherer</title>
+<title>Thomas Leo Scherer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -41,8 +43,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-3accfb8913872275534684de8611f1a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -95,21 +153,25 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="https://www.AbroadReview.com"> 
+<span class="menu-text">AbroadReview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./foreignpolicy.html"> 
+<span class="menu-text">Foreign Policy</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./gaming.html"> 
+<span class="menu-text">Gaming</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Research</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">More</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-research">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-more">    
         <li>
-    <a class="dropdown-item" href="./living_lit_review.qmd">
- <span class="dropdown-text">Living Lit Review</span></a>
+    <a class="dropdown-item" href="./about.html">
+ <span class="dropdown-text">About</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./publications.qmd">
@@ -117,30 +179,20 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gaming" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Gaming</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-gaming">    
-        <li>
-    <a class="dropdown-item" href="./posts.qmd#category=board_games">
- <span class="dropdown-text">Board Games</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./posts.qmd#category=TTRPGs">
- <span class="dropdown-text">TTRPGs</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./posts.qmd#category=computer_games">
- <span class="dropdown-text">Computer Games</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0);"> 
+<span class="menu-text"><span class="open-subscribe-modal" style="background-color: #0d6efd; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: pointer;">Subscribe</span></span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="https://bsky.app/profile/tlscherer.bsky.social" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+<span class="menu-text">bluesky</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/thomas-scherer-b468847/" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -150,40 +202,283 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Zm9yZWlnbiUyMHBvbGljeQ==">foreign policy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2FtaW5n">gaming <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">tlscherer.github.io</h1>
+
+
+
+<div class="column-body" style="margin-bottom: 2rem;">
+<p>Welcome to my personal site, title TBD.</p>
+<p>I run <a href="www.abroadreview.com">AbroadReview</a>, living summaries of the best academic research on international relations. On this site, I explore two other passions: improving U.S. foreign policy and gaming with friends.</p>
 </div>
 
 
 
-<div class="quarto-title-meta">
 
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="Zm9yZWlnbiUyMHBvbGljeQ==" data-listing-date-sort="1788152400000" data-listing-file-modified-sort="1788222942762" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="100">
+<div class="thumbnail"><a href="./posts/FPaccountabilility.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/FPaccountabilility.html" class="no-external">Accountability in U.S. Foreign Policy</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Zm9yZWlnbiUyMHBvbGljeQ=='); return false;">foreign policy</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/FPaccountabilility.html" class="no-external">
+<p>Are their any consequences for foreign policy blunders?</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/FPaccountabilility.html" class="no-external">
+<div class="listing-date">
+Aug 31, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Zm9yZWlnbiUyMHBvbGljeQ==" data-listing-date-sort="1788152400000" data-listing-file-modified-sort="1788222945626" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
+<div class="thumbnail"><a href="./posts/FPforthePeople.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/FPforthePeople.html" class="no-external">Foreign Policy for the People</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Zm9yZWlnbiUyMHBvbGljeQ=='); return false;">foreign policy</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/FPforthePeople.html" class="no-external">
+<p>People keep deluding themselves into believing this can work. But it might work for us.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/FPforthePeople.html" class="no-external">
+<div class="listing-date">
+Aug 31, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="Z2FtaW5n" data-listing-date-sort="1788152400000" data-listing-file-modified-sort="1788223619709" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
+<div class="thumbnail"><a href="./posts/peerreviewedgaming.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/peerreviewedgaming.html" class="no-external">Peer-reviewed Gaming</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2FtaW5n'); return false;">gaming</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/peerreviewedgaming.html" class="no-external">
+<p>Why did a university press have a booth at GenCon?</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/peerreviewedgaming.html" class="no-external">
+<div class="listing-date">
+Aug 31, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="Z2FtaW5n" data-listing-date-sort="1788152400000" data-listing-file-modified-sort="1788222947756" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="thumbnail"><a href="./posts/gencon2026.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/gencon2026.html" class="no-external">GenCon 2026</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2FtaW5n'); return false;">gaming</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/gencon2026.html" class="no-external">
+<p>Gameplays and takeaways from nerd-vana</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/gencon2026.html" class="no-external">
+<div class="listing-date">
+Aug 31, 2026
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
+<!-- Pop-up Modal Structure -->
+<div id="subscribe-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 2em; border-radius: 8px; max-width: 450px; width: 90%; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
     
-  
-    
+    <!-- Close Button -->
+    <span onclick="closeSubscribeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #6c757d;">×</span>
+
+    <form id="google-sheet-modal-form">
+      <div style="margin-bottom: 1.25em;">
+        <label for="modal-email" style="display: block; font-weight: 600; margin-bottom: 0.5em;">Get Updates on New Posts</label>
+        <input type="email" id="modal-email" name="email" placeholder="you@example.com" required="" style="width: 100%; padding: 0.6em; border: 1px solid #ced4da; border-radius: 4px;">
+      </div>
+
+      <!-- Category Selection Checkboxes -->
+      <div style="margin-bottom: 1.25em;">
+        <label style="display: block; font-weight: 600; margin-bottom: 0.5em;">Select Topics</label>
+        
+        <label style="display: block; margin-bottom: 0.3em; cursor: pointer;">
+          <input type="checkbox" id="modal-cat-all" value="All" checked=""> <b>All Topics</b>
+        </label>
+        
+        <label style="display: block; margin-bottom: 0.3em; margin-left: 0.8em; cursor: pointer;">
+          <input type="checkbox" class="modal-cat-option" value="ForeignPolicy" checked=""> Foreign Policy
+        </label>
+        
+        <label style="display: block; margin-bottom: 0.3em; margin-left: 0.8em; cursor: pointer;">
+          <input type="checkbox" class="modal-cat-option" value="Gaming" checked=""> Gaming
+        </label>
+      </div>
+
+      <button type="submit" id="modal-submit-btn" style="width: 100%; padding: 0.6em 1.4em; background-color: #0d6efd; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">
+        Subscribe
+      </button>
+      
+      <div id="modal-form-message" style="margin-top: 1em; display: none; font-weight: 600; text-align: center;"></div>
+    </form>
   </div>
-  
+</div>
 
+<script>
+  window.openSubscribeModal = function() {
+    const modal = document.getElementById('subscribe-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+    }
+  };
 
-</header>
+  window.closeSubscribeModal = function() {
+    const modal = document.getElementById('subscribe-modal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  };
 
+  // Checkbox toggle logic
+  document.addEventListener('change', function(e) {
+    const catAll = document.getElementById('modal-cat-all');
+    const catOptions = document.querySelectorAll('.modal-cat-option');
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+    if (e.target === catAll) {
+      catOptions.forEach(cb => cb.checked = catAll.checked);
+    } else if (e.target.classList.contains('modal-cat-option')) {
+      const allChecked = Array.from(catOptions).every(cb => cb.checked);
+      catAll.checked = allChecked;
+    }
+  });
 
+  // Attach global click handler (bypasses DOMContentLoaded timing issues)
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('.open-subscribe-modal') || e.target.closest('a[href="#subscribe"]');
+    if (target) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.openSubscribeModal();
+    }
 
+    // Close modal when clicking backdrop
+    const modal = document.getElementById('subscribe-modal');
+    if (modal && e.target === modal) {
+      window.closeSubscribeModal();
+    }
+  });
 
-</main> <!-- /main -->
+  // Google Apps Script Form Submission
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby6AwallcYohiQucPlJ57u4iYL7Sf-zhUL7bZATcio2gnA9NJ6-X6NDv3Z_SDDMgzC1/exec';
+
+  document.addEventListener('submit', function(e) {
+    if (e.target && e.target.id === 'google-sheet-modal-form') {
+      e.preventDefault();
+      const modalBtn = document.getElementById('modal-submit-btn');
+      const modalMsg = document.getElementById('modal-form-message');
+      const catAll = document.getElementById('modal-cat-all');
+      const catOptions = document.querySelectorAll('.modal-cat-option');
+
+      // Gather selected categories
+      let selectedCategories = [];
+      if (catAll && catAll.checked) {
+        selectedCategories.push("All");
+      } else {
+        catOptions.forEach(cb => {
+          if (cb.checked) selectedCategories.push(cb.value);
+        });
+      }
+
+      if (selectedCategories.length === 0) {
+        modalMsg.style.display = 'block';
+        modalMsg.style.color = '#dc3545';
+        modalMsg.innerText = 'Please select at least one topic.';
+        return;
+      }
+
+      modalBtn.disabled = true;
+      modalBtn.innerText = 'Submitting...';
+
+      const formData = new FormData();
+      formData.append('email', document.getElementById('modal-email').value);
+      formData.append('categories', selectedCategories.join(', '));
+
+      fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors', 
+        body: formData 
+      })
+        .then(response => {
+          modalMsg.style.display = 'block';
+          modalMsg.style.color = '#198754';
+          modalMsg.innerText = 'Thank you! You are subscribed.';
+          e.target.reset();
+          if (catAll) catAll.checked = true;
+          catOptions.forEach(cb => cb.checked = true);
+          modalBtn.disabled = false;
+          modalBtn.innerText = 'Subscribe';
+          setTimeout(window.closeSubscribeModal, 2000);
+        })
+        .catch(error => {
+          modalMsg.style.display = 'block';
+          modalMsg.style.color = '#dc3545';
+          modalMsg.innerText = 'Something went wrong. Please try again.';
+          modalBtn.disabled = false;
+          modalBtn.innerText = 'Subscribe';
+        });
+    }
+  });
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

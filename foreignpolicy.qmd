@@ -1,0 +1,15 @@
+---
+title: "Foreign Policy"
+subtitle: "Posts focused on improving U.S. foreign policy"
+listing:
+  contents: posts
+  include:
+    categories: "foreign policy"
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: false
+---
