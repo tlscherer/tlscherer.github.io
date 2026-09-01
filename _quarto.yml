@@ -50,7 +50,7 @@ format:
   html:
     theme:
       - cosmo
-      - brand
+      - brand.scss
     include-after-body: subscribe.html
     css: styles.css
     toc: true
@@ -65,9 +65,10 @@ format:
     # link-external-filter: '^(?:http:|https:)\/\/drganghe\.github\.io\/custom'
     # include-in-header: "files/includes/_academic.qmd"
     header-includes: |
-      <script async src="https://plausible.io/js/pa--CWv1kp2iawYibWYwQ4yq.js"></script>
-      <script>
-        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-        plausible.init()
-      </script>
+      <script defer data-domain="tlscherer.com" src="https://plausible.io/js/script.js"></script>
+# <script async src="https://plausible.io/js/pa--CWv1kp2iawYibWYwQ4yq.js"></script>
+# <script>
+#   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+#   plausible.init()
+# </script>
 
