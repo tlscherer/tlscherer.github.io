@@ -31,10 +31,10 @@ website:
     right:
       - text: "<span class='open-subscribe-modal' style='background-color: #0d6efd; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: pointer;'>Subscribe</span>"
         href: "javascript:void(0);"
-      - text: bluesky
+      - text: "<span style='background-color: #1185fe; color: white; padding: 4px 6px; border-radius: 4px; display: inline-flex; align-items: center;'>{{< fa brands bluesky >}}</span>"
         href: https://bsky.app/profile/tlscherer.bsky.social
         target: _blank
-      - icon: linkedin
+      - text: "<span style='background-color: #0A66C2; color: white; padding: 4px 6px; border-radius: 4px; display: inline-flex; align-items: center;'>{{< fa brands linkedin >}}</span>"
         href: https://www.linkedin.com/in/thomas-scherer-b468847/
         target: _blank
 
@@ -65,4 +65,7 @@ format:
     # link-external-filter: '^(?:http:|https:)\/\/drganghe\.github\.io\/custom'
     # include-in-header: "files/includes/_academic.qmd"
     header-includes: |
-      <script defer data-domain="tlscherer.com" src="https://plausible.io/js/script.js"></script>
+            <script async src="https://plausible.io/js/pa--CWv1kp2iawYibWYwQ4yq.js"></script>
+      <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
