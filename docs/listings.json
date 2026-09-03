@@ -1,9 +1,9 @@
 [
   {
-    "listing": "/gaming.html",
+    "listing": "/foreignpolicy.html",
     "items": [
-      "/posts/peerreviewedgaming.html",
-      "/posts/gencon2026.html"
+      "/posts/FPaccountabilility.html",
+      "/posts/FPforthePeople.html"
     ]
   },
   {
@@ -16,10 +16,10 @@
     ]
   },
   {
-    "listing": "/foreignpolicy.html",
+    "listing": "/gaming.html",
     "items": [
-      "/posts/FPaccountabilility.html",
-      "/posts/FPforthePeople.html"
+      "/posts/peerreviewedgaming.html",
+      "/posts/gencon2026.html"
     ]
   }
 ]

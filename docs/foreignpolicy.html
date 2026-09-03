@@ -43,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-3accfb8913872275534684de8611f1a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,6 +101,11 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<script async="" src="https://plausible.io/js/pa--CWv1kp2iawYibWYwQ4yq.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -174,7 +181,7 @@ window.Quarto = {
  <span class="dropdown-text">About</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./publications.qmd">
+    <a class="dropdown-item" href="./publications.html">
  <span class="dropdown-text">Publications</span></a>
   </li>  
     </ul>
@@ -182,17 +189,16 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./#subscribe"> 
+    <a class="nav-link" href="javascript:void(0);"> 
 <span class="menu-text"><span class="open-subscribe-modal" style="background-color: #0d6efd; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: pointer;">Subscribe</span></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://bsky.app/profile/tlscherer.bsky.social" target="_blank"> 
-<span class="menu-text">bluesky</span></a>
+<span class="menu-text"><span style="background-color: #1185fe; color: white; padding: 4px 6px; border-radius: 4px; display: inline-flex; align-items: center;"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/thomas-scherer-b468847/" target="_blank"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/thomas-scherer-b468847/" target="_blank"> 
+<span class="menu-text"><span style="background-color: #0A66C2; color: white; padding: 4px 6px; border-radius: 4px; display: inline-flex; align-items: center;"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -294,6 +300,150 @@ Aug 31, 2026
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
+<!-- Pop-up Modal Structure -->
+<div id="subscribe-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 2em; border-radius: 8px; max-width: 450px; width: 90%; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+    
+    <!-- Close Button -->
+    <span onclick="closeSubscribeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #6c757d;">×</span>
+
+    <form id="google-sheet-modal-form">
+      <div style="margin-bottom: 1.25em;">
+        <label for="modal-email" style="display: block; font-weight: 600; margin-bottom: 0.5em;">Get Updates on New Posts</label>
+        <input type="email" id="modal-email" name="email" placeholder="you@example.com" required="" style="width: 100%; padding: 0.6em; border: 1px solid #ced4da; border-radius: 4px;">
+      </div>
+
+      <!-- Category Selection Checkboxes -->
+      <div style="margin-bottom: 1.25em;">
+        <label style="display: block; font-weight: 600; margin-bottom: 0.5em;">Select Topics</label>
+        
+        <label style="display: block; margin-bottom: 0.3em; cursor: pointer;">
+          <input type="checkbox" id="modal-cat-all" value="All" checked=""> <b>All Topics</b>
+        </label>
+        
+        <label style="display: block; margin-bottom: 0.3em; margin-left: 0.8em; cursor: pointer;">
+          <input type="checkbox" class="modal-cat-option" value="ForeignPolicy" checked=""> Foreign Policy
+        </label>
+        
+        <label style="display: block; margin-bottom: 0.3em; margin-left: 0.8em; cursor: pointer;">
+          <input type="checkbox" class="modal-cat-option" value="Gaming" checked=""> Gaming
+        </label>
+      </div>
+
+      <button type="submit" id="modal-submit-btn" style="width: 100%; padding: 0.6em 1.4em; background-color: #0d6efd; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">
+        Subscribe
+      </button>
+      
+      <div id="modal-form-message" style="margin-top: 1em; display: none; font-weight: 600; text-align: center;"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  window.openSubscribeModal = function() {
+    const modal = document.getElementById('subscribe-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+    }
+  };
+
+  window.closeSubscribeModal = function() {
+    const modal = document.getElementById('subscribe-modal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  };
+
+  // Checkbox toggle logic
+  document.addEventListener('change', function(e) {
+    const catAll = document.getElementById('modal-cat-all');
+    const catOptions = document.querySelectorAll('.modal-cat-option');
+
+    if (e.target === catAll) {
+      catOptions.forEach(cb => cb.checked = catAll.checked);
+    } else if (e.target.classList.contains('modal-cat-option')) {
+      const allChecked = Array.from(catOptions).every(cb => cb.checked);
+      catAll.checked = allChecked;
+    }
+  });
+
+  // Attach global click handler (bypasses DOMContentLoaded timing issues)
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('.open-subscribe-modal') || e.target.closest('a[href="#subscribe"]');
+    if (target) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.openSubscribeModal();
+    }
+
+    // Close modal when clicking backdrop
+    const modal = document.getElementById('subscribe-modal');
+    if (modal && e.target === modal) {
+      window.closeSubscribeModal();
+    }
+  });
+
+  // Google Apps Script Form Submission
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby6AwallcYohiQucPlJ57u4iYL7Sf-zhUL7bZATcio2gnA9NJ6-X6NDv3Z_SDDMgzC1/exec';
+
+  document.addEventListener('submit', function(e) {
+    if (e.target && e.target.id === 'google-sheet-modal-form') {
+      e.preventDefault();
+      const modalBtn = document.getElementById('modal-submit-btn');
+      const modalMsg = document.getElementById('modal-form-message');
+      const catAll = document.getElementById('modal-cat-all');
+      const catOptions = document.querySelectorAll('.modal-cat-option');
+
+      // Gather selected categories
+      let selectedCategories = [];
+      if (catAll && catAll.checked) {
+        selectedCategories.push("All");
+      } else {
+        catOptions.forEach(cb => {
+          if (cb.checked) selectedCategories.push(cb.value);
+        });
+      }
+
+      if (selectedCategories.length === 0) {
+        modalMsg.style.display = 'block';
+        modalMsg.style.color = '#dc3545';
+        modalMsg.innerText = 'Please select at least one topic.';
+        return;
+      }
+
+      modalBtn.disabled = true;
+      modalBtn.innerText = 'Submitting...';
+
+      const formData = new FormData();
+      formData.append('email', document.getElementById('modal-email').value);
+      formData.append('categories', selectedCategories.join(', '));
+
+      fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors', 
+        body: formData 
+      })
+        .then(response => {
+          modalMsg.style.display = 'block';
+          modalMsg.style.color = '#198754';
+          modalMsg.innerText = 'Thank you! You are subscribed.';
+          e.target.reset();
+          if (catAll) catAll.checked = true;
+          catOptions.forEach(cb => cb.checked = true);
+          modalBtn.disabled = false;
+          modalBtn.innerText = 'Subscribe';
+          setTimeout(window.closeSubscribeModal, 2000);
+        })
+        .catch(error => {
+          modalMsg.style.display = 'block';
+          modalMsg.style.color = '#dc3545';
+          modalMsg.innerText = 'Something went wrong. Please try again.';
+          modalBtn.disabled = false;
+          modalBtn.innerText = 'Subscribe';
+        });
+    }
+  });
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -367,7 +517,7 @@ Aug 31, 2026
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/www\.tlscherer\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -707,8 +857,8 @@ Thomas Leo Scherer ©
 <script>document.write(new Date().getFullYear())</script>
 </div>   
     <div class="nav-footer-center">
-<p>Built on <a href="https://github.com/drganghe/quarto-academic-website-template">Quarto Academic Website Template</a> adapted by <a href="http://drganghe.github.io">Dr.&nbsp;Gang He</a></p>
-</div>
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

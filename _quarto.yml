@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: docs
-
+absolute-url: "https://yourdomain.com"
 website:
   title: "Thomas Leo Scherer"
   site-url: "https://www.tlscherer.com"  
@@ -50,7 +50,6 @@ format:
   html:
     theme:
       - cosmo
-      - brand.scss
     include-after-body: subscribe.html
     css: styles.css
     toc: true
