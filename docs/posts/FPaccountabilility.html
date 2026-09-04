@@ -283,66 +283,71 @@ ul.task-list li input[type="checkbox"] {
     }
   });
 
-  // Google Apps Script Form Submission
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwweb_Yyv2teVGGLyQAyTG19g9zxNMVRp-lJNEzhYrx_dIwlFPL9j-xXFDXSJigzpDCtQ/exec';
-  
-  document.addEventListener('submit', function(e) {
-    if (e.target && e.target.id === 'google-sheet-modal-form') {
-      e.preventDefault();
-      const modalBtn = document.getElementById('modal-submit-btn');
-      const modalMsg = document.getElementById('modal-form-message');
-      const catAll = document.getElementById('modal-cat-all');
-      const catOptions = document.querySelectorAll('.modal-cat-option');
 
-      // Gather selected categories
-      let selectedCategories = [];
-      if (catAll && catAll.checked) {
-        selectedCategories.push("All");
-      } else {
-        catOptions.forEach(cb => {
-          if (cb.checked) selectedCategories.push(cb.value);
-        });
-      }
+// Google Apps Script Form Submission
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwweb_Yyv2teVGGLyQAyTG19g9zxNMVRp-lJNEzhYrx_dIwlFPL9j-xXFDXSJigzpDCtQ/exec';
 
-      if (selectedCategories.length === 0) {
+document.addEventListener('submit', function(e) {
+  if (e.target && e.target.id === 'google-sheet-modal-form') {
+    e.preventDefault();
+    const modalBtn = document.getElementById('modal-submit-btn');
+    const modalMsg = document.getElementById('modal-form-message');
+    const catAll = document.getElementById('modal-cat-all');
+    const catOptions = document.querySelectorAll('.modal-cat-option');
+
+    // Gather selected categories
+    let selectedCategories = [];
+    if (catAll && catAll.checked) {
+      selectedCategories.push("All");
+    } else {
+      catOptions.forEach(cb => {
+        if (cb.checked) selectedCategories.push(cb.value);
+      });
+    }
+
+    if (selectedCategories.length === 0) {
+      modalMsg.style.display = 'block';
+      modalMsg.style.color = '#dc3545';
+      modalMsg.innerText = 'Please select at least one topic.';
+      return;
+    }
+
+    modalBtn.disabled = true;
+    modalBtn.innerText = 'Submitting...';
+
+    // Send payload using URLSearchParams for application/x-www-form-urlencoded compatibility
+    const payload = new URLSearchParams();
+    payload.append('email', document.getElementById('modal-email').value);
+    payload.append('categories', selectedCategories.join(', '));
+
+    fetch(scriptURL, { 
+      method: 'POST', 
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: payload.toString()
+    })
+      .then(() => {
+        modalMsg.style.display = 'block';
+        modalMsg.style.color = '#198754';
+        modalMsg.innerText = 'Thank you! You are subscribed.';
+        e.target.reset();
+        if (catAll) catAll.checked = true;
+        catOptions.forEach(cb => cb.checked = true);
+        modalBtn.disabled = false;
+        modalBtn.innerText = 'Subscribe';
+        setTimeout(window.closeSubscribeModal, 2000);
+      })
+      .catch(error => {
         modalMsg.style.display = 'block';
         modalMsg.style.color = '#dc3545';
-        modalMsg.innerText = 'Please select at least one topic.';
-        return;
-      }
-
-      modalBtn.disabled = true;
-      modalBtn.innerText = 'Submitting...';
-
-      const formData = new FormData();
-      formData.append('email', document.getElementById('modal-email').value);
-      formData.append('categories', selectedCategories.join(', '));
-
-      fetch(scriptURL, { 
-        method: 'POST', 
-        mode: 'no-cors', 
-        body: formData 
-      })
-        .then(response => {
-          modalMsg.style.display = 'block';
-          modalMsg.style.color = '#198754';
-          modalMsg.innerText = 'Thank you! You are subscribed.';
-          e.target.reset();
-          if (catAll) catAll.checked = true;
-          catOptions.forEach(cb => cb.checked = true);
-          modalBtn.disabled = false;
-          modalBtn.innerText = 'Subscribe';
-          setTimeout(window.closeSubscribeModal, 2000);
-        })
-        .catch(error => {
-          modalMsg.style.display = 'block';
-          modalMsg.style.color = '#dc3545';
-          modalMsg.innerText = 'Something went wrong. Please try again.';
-          modalBtn.disabled = false;
-          modalBtn.innerText = 'Subscribe';
-        });
-    }
-  });
+        modalMsg.innerText = 'Something went wrong. Please try again.';
+        modalBtn.disabled = false;
+        modalBtn.innerText = 'Subscribe';
+      });
+  }
+});
 </script>
 <div style="margin-top: 4em; padding-top: 2em; border-top: 1px solid #e9ecef;">
   <h3>Comments</h3>
