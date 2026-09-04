@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: docs
-absolute-url: "https://yourdomain.com"
+absolute-url: "https://www.tlscherer.com"
 website:
   title: "Thomas Leo Scherer"
   site-url: "https://www.tlscherer.com"  
