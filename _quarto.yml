@@ -12,8 +12,10 @@ website:
         href: https://www.AbroadReview.com
       - text: Foreign Policy
         href: foreignpolicy.qmd
-      - text: Gaming
-        href: gaming.qmd
+      - text: Play
+        href: play.qmd
+      - text: Politics
+        href: politics.qmd
       - text: More
         menu:
         - text: About

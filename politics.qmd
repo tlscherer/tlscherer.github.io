@@ -1,10 +1,10 @@
 ---
-title: "Gaming with Friends"
-subtitle: "Posts focused on playing games with your friends"
+title: "Politics"
+subtitle: "Posts about politics"
 listing:
   contents: posts
   include:
-    categories: "gaming"
+    categories: "politics"
   sort: "date desc"
   type: default
   categories: true
