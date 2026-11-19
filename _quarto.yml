@@ -10,12 +10,12 @@ website:
     left:
       - text: AbroadReview
         href: https://www.AbroadReview.com
+      - text: Politics
+        href: politics.qmd
       - text: Foreign Policy
         href: foreignpolicy.qmd
       - text: Play
         href: play.qmd
-      - text: Politics
-        href: politics.qmd
       - text: More
         menu:
         - text: About
